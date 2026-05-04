@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Bayroof Custom Color Palette */
+  --color-deep-navy: #1A2B4C;
+  --color-gold: #D4AF37;
+  --color-dark-green: #1E352F;
+  --color-ocean-green: #2E8B57;
+  --color-ice-blue: #E8F1F5;
+  --color-murky-green: #4A5D52;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), Arial, sans-serif;
+  --font-mono: var(--font-geist-mono);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #ffffff;
+  --foreground: #1A2B4C;
+  /* Deep Navy as the default text color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* For now, keeping it consistent. You can adjust dark mode later if needed */
+    --background: #1A2B4C;
+    --foreground: #ffffff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
