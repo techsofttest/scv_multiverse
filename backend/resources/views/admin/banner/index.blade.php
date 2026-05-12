@@ -1,0 +1,95 @@
+@extends('adminlte::page')
+
+@section('title', 'View Banner')
+
+@section('content_header')
+    <div class="d-flex justify-content-between align-items-center">
+        <h1><strong>View Banner</strong></h1>
+    </div>
+@stop
+
+@section('content')
+    <div class="card shadow-sm border-0 rounded-lg">
+        <div class="card-header">
+            <h3 class="card-title">Manage Inquiries</h3>
+        </div>
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>SI no</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($banner as $ban)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $ban->title }}</td>
+                               <td><img src="{{asset('uploads/banner/'.$ban->image)}}" alt="image"  width="150px" alt="No Image" style="background-color: #17a2b8;"></td>
+                                <td >
+                                    <a href="{{ route('banner.edit', $ban->id) }}"
+                                        class="btn btn-sm btn-outline-primary mr-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form action="{{ route('banner.destroy', $ban->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('Are you sure?')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center py-4 text-muted">No records found.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {{-- <div class="card-footer clearfix">
+                {{ $contacts->links() }}
+            </div> --}}
+    </div>
+@stop
+
+@section('css')
+    <style>
+        .btn-outline-primary {
+            color: #0a5c40;
+            border-color: #0a5c40;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #0a5c40;
+            border-color: #0a5c40;
+        }
+
+        .thead-light th {
+            background-color: #f8f9fa;
+        }
+    </style>
+@stop
+@section('js')
+     @if(session('success'))
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Success',
+    text: '{{ session('success') }}',
+    timer: 2000,
+    showConfirmButton: false
+});
+</script>
+@endif
+@stop
