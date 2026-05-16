@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  /* Core background and foreground */
+  --background: #112318;
+  /* Darkest green */
+  --foreground: #ffffff;
+
+  /* SCV Custom Color Palette */
+  --scv-bg-dark: #112318;
+  --scv-bg-panel: #0A3A19;
+  --scv-green-neon: #0BC13E;
+  --scv-green-muted: #20B266;
+  --scv-orange-neon: #FFAE41;
+  --scv-orange-dark: #3A2308;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-cabin);
+
+  /* Map CSS variables to Tailwind classes */
+  --color-scv-dark: var(--scv-bg-dark);
+  --color-scv-panel: var(--scv-bg-panel);
+  --color-scv-green: var(--scv-green-neon);
+  --color-scv-green-muted: var(--scv-green-muted);
+  --color-scv-orange: var(--scv-orange-neon);
+  --color-scv-orange-dark: var(--scv-orange-dark);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  /* The subtle dot grid background from your design */
+  background-image:
+    radial-gradient(circle at center 100%, rgba(11, 193, 62, 0.05) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 30px 30px;
+}
