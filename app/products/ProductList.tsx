@@ -115,8 +115,8 @@ export default function ProductsPage() {
                                 </h2>
 
                                 {/* line-clamp-3 ensures it never breaks the grid layout by growing too tall */}
-                                <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
-                                    {product.content}
+                                 <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
+                                       {product.content}
                                 </p>
                             </div>
                         </motion.div>

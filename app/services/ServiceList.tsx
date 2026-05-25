@@ -127,7 +127,7 @@ export default function ServicesPage() {
                                         </div>
 
                                         {/* line-clamp-4 ensures consistent card height while showing rich details */}
-                                        <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">
+                                         <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
                                             {service.content}
                                         </p>
                                     </div>

@@ -12,9 +12,13 @@ interface CapabilityRow {
   bullets: string[];
   image: string | null;
 }
-
+interface PartnerData {
+  id: number;
+  cms_title: string;
+  content: string;
+}
 export default function CapabilitiesDetailed() {
-
+  const [Partner, setPartner] = useState<PartnerData | null>(null);
   const [serv, setServices] = useState<CapabilityRow[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +29,7 @@ export default function CapabilitiesDetailed() {
 
         // IMPORTANT
         setServices(data.serv || []);
-
+        setPartner(data.Partner);
         setLoading(false);
       })
       .catch((err) => {
@@ -34,7 +38,7 @@ export default function CapabilitiesDetailed() {
       });
   }, []);
 
-  if (loading || serv.length === 0) return null;
+  if (loading || serv.length === 0 || !Partner) return null;
 
   // -----------------------------------------
   // ANIMATION VARIANTS
@@ -83,14 +87,12 @@ export default function CapabilitiesDetailed() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            One trusted partner for heavy
-            <br />
-            engineering{' '}
-            <span className="text-[#FFAE41]">
-              + advanced robotics
-            </span>
-          </h2>
+          <h2
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight [&_strong]:text-[#FFAE41]"
+            dangerouslySetInnerHTML={{
+              __html: Partner?.content || '',
+            }}
+          />
         </motion.div>
 
         {/* DYNAMIC ROWS */}
@@ -114,8 +116,8 @@ export default function CapabilitiesDetailed() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-100px' }}
                   className={`flex flex-col gap-6 lg:col-span-5 ${reverse
-                      ? 'lg:order-2'
-                      : 'lg:order-1'
+                    ? 'lg:order-2'
+                    : 'lg:order-1'
                     }`}
                 >
 
@@ -156,8 +158,8 @@ export default function CapabilitiesDetailed() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-100px' }}
                   className={`lg:col-span-7 ${reverse
-                      ? 'lg:order-1'
-                      : 'lg:order-2'
+                    ? 'lg:order-1'
+                    : 'lg:order-2'
                     }`}
                 >
 

@@ -17,8 +17,11 @@ interface Capability {
   name: string;
   href: string;
 }
-
-
+interface Headingdata {
+  id: number;
+  cms_title: string;
+  content: string;
+}
 export default function CapabilitiesBento() {
 
 
@@ -32,6 +35,7 @@ export default function CapabilitiesBento() {
     }
   };
   const [pages, setPages] = useState<Page[]>([]);
+  const [Heading, setHeading] = useState<Headingdata | null>(null);
   const [loading, setLoading] = useState(true);
 const capabilities = pages[3]?.capabilities || [];
   useEffect(() => {
@@ -41,6 +45,7 @@ const capabilities = pages[3]?.capabilities || [];
       .then(data => {
         // Accessing the 'services' key from your JSON response
         setPages(data.pages);
+        setHeading(data.Heading);
         setLoading(false);
       })
       .catch(err => {
@@ -49,7 +54,7 @@ const capabilities = pages[3]?.capabilities || [];
       });
   }, []);
 
- if (loading || pages.length === 0) return null;
+if (loading || pages.length === 0 || !Heading) return null;
   return (
     <section className="w-full bg-[#041609] py-12 md:py-16 px-6 md:px-10 lg:px-16 flex flex-col items-center">
       <div className="w-full max-w-[1400px] flex flex-col gap-12 md:gap-16">
@@ -64,8 +69,8 @@ const capabilities = pages[3]?.capabilities || [];
         >
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              Engineered for resilience,<br className="hidden md:block" /> designed for precision.
-            </h2>
+            {Heading?.content}
+          </h2>
           </div>
           <div className="shrink-0">
             <Link
@@ -90,7 +95,7 @@ const capabilities = pages[3]?.capabilities || [];
               className="lg:col-span-5 rounded-[20px] border border-[#0BC13E]/30 bg-[#0B1A10] hover:border-[#0BC13E]/80 hover:shadow-[0_0_30px_rgba(11,193,62,0.12)] transition-all duration-500 overflow-hidden flex flex-col justify-between"
             >
               <div className="p-6 md:p-8 flex flex-col gap-3">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#aaffcc]">
+                <h3 className="text-[18px] font-bold tracking-tight text-[#aaffcc]">
                   {pages[0].title}
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base leading-relaxed">
@@ -132,7 +137,7 @@ const capabilities = pages[3]?.capabilities || [];
 
               {/* Bottom text part */}
               <div className="p-6 md:p-8 flex flex-col gap-3">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#FFE0B2]">
+                <h3 className="text-[18px]  font-bold tracking-tight text-[#FFE0B2]">
                   {pages[1].title}
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base leading-relaxed">{pages[1].content}</p>
@@ -162,7 +167,7 @@ const capabilities = pages[3]?.capabilities || [];
 
               {/* Content overlayed at bottom */}
               <div className="relative z-10 flex flex-col gap-4 max-w-xl">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white">{pages[2].title}</h3>
+                <h3 className="text-[18px]  font-bold tracking-tight text-white">{pages[2].title}</h3>
                 <p className="text-gray-200 text-sm md:text-base leading-relaxed">{pages[2].content} </p>
               </div>
             </motion.div>
@@ -178,7 +183,7 @@ const capabilities = pages[3]?.capabilities || [];
               className="lg:col-span-5 rounded-[20px] border border-[#FFAE41]/30 bg-[#1C1207] hover:border-[#FFAE41]/80 hover:shadow-[0_0_30px_rgba(255,174,65,0.08)] transition-all duration-500 p-6 md:p-8 flex flex-col justify-between gap-6"
             >
               <div className="flex flex-col gap-4">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#FFE0B2]">
+                <h3 className="text-[18px]  font-bold tracking-tight text-[#FFE0B2]">
                   {pages[3].title}
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base leading-relaxed">
