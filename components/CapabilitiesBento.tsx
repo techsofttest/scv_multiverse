@@ -68,9 +68,12 @@ if (loading || pages.length === 0 || !Heading) return null;
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-            {Heading?.content}
-          </h2>
+                  <h2
+        className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight"
+        dangerouslySetInnerHTML={{
+          __html: Heading?.content || '',
+        }}
+      />
           </div>
           <div className="shrink-0">
             <Link
