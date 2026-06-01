@@ -9,7 +9,7 @@ const nextConfig = {
       },
     ],
 
-    dangerouslyAllowSVG: true,
+    dangerouslyAllowSVG: true, 
     unoptimized: true,
   },
 };

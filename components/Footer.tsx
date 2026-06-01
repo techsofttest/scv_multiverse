@@ -51,7 +51,7 @@ export default function Footer() {
                     {/* Column 3: Company */}
                     <div className="flex flex-col gap-6">
                         <h3 className="text-lg font-bold uppercase tracking-wider mb-2">Company</h3>
-                        <Link href="#" className="text-gray-300 hover:text-[#0BC13E] transition-colors">About SMG</Link>
+                        <Link href="/about" className="text-gray-300 hover:text-[#0BC13E] transition-colors">About SMG</Link>
                         <Link href="#" className="text-gray-300 hover:text-[#0BC13E] transition-colors">Global Leadership</Link>
                         <Link href="#" className="text-gray-300 hover:text-[#0BC13E] transition-colors">HSE & Compliance</Link>
                         <Link href="#" className="text-gray-300 hover:text-[#0BC13E] transition-colors">Careers</Link>
