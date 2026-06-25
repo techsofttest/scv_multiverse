@@ -22,7 +22,11 @@ interface BannerData {
     content: string;
     image: string | null;
 }
-
+interface qusData {
+    id: number;
+    title: string;
+    content: string;
+}
 const cardVariants: Variants = {
     hidden: { opacity: 0, y: 35 },
     visible: (idx: number) => ({
@@ -39,6 +43,7 @@ const cardVariants: Variants = {
 export default function ServicesPage() {
     const [services, setServices] = useState<ServiceData[]>([]);
     const [banner, setBanner] = useState<BannerData | null>(null);
+      const [qus, setQus] = useState<qusData | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -49,6 +54,7 @@ export default function ServicesPage() {
                 // Accessing the 'services' key from your JSON response
                 setServices(data.services);
                 setBanner(data.banner);
+                setQus(data.qus);
                 setLoading(false);
             })
             .catch(err => {
@@ -160,11 +166,9 @@ export default function ServicesPage() {
                                 <Shield className="w-8 h-8" />
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-[#FFAE41] transition-colors duration-300">
-                                Need a Bespoke Engineering Solution?
+                               {qus?.title}?
                             </h2>
-                            <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                                Our world-class R&D division constructs custom mechanical solutions, robotic apparatus, and automation blueprints tailored directly to your high-stress offshore or subsea infrastructure needs.
-                            </p>
+                            <p className="text-gray-400 text-sm leading-relaxed mb-8">{qus?.content}</p>
                         </div>
                         <div className="pt-6 border-t border-white/5">
                             <Link
