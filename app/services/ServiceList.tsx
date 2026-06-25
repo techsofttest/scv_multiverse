@@ -136,9 +136,6 @@ export default function ServicesPage() {
                                          <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
                                             {service.content}
                                         </p>
-                                             <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
-                                            {service.content}
-                                        </p>
                                     </div>
 
                                     <div className="pt-6 border-t border-white/5 mt-auto flex items-center justify-between">
