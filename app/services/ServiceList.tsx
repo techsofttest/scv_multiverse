@@ -136,10 +136,12 @@ export default function ServicesPage() {
                                          <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
                                             {service.content}
                                         </p>
-                                        <p 
-    className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal"
-    dangerouslySetInnerHTML={{ __html: service.content }} 
-/>
+                                        <div className="text-gray-400 text-sm leading-relaxed space-y-4">
+                                            <div 
+                                                className="prose prose-invert prose-sm max-w-none"
+                                                dangerouslySetInnerHTML={{ __html: service.content }} 
+                                            />
+                                        </div>
                                     </div>
 
                                     <div className="pt-6 border-t border-white/5 mt-auto flex items-center justify-between">
