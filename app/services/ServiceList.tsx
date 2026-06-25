@@ -133,9 +133,10 @@ export default function ServicesPage() {
                                         </div>
 
                                         {/* line-clamp-4 ensures consistent card height while showing rich details */}
-                                         <p className="text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
-                                            {service.content}
-                                        </p>
+                                      <div 
+    className="text-gray-400 text-sm leading-relaxed break-words"
+    dangerouslySetInnerHTML={{ __html: service.content }} 
+/>
                                     </div>
 
                                     <div className="pt-6 border-t border-white/5 mt-auto flex items-center justify-between">
